@@ -3,7 +3,9 @@
   flex-direction: column;
   justify-content: center;
   margin-left: 15px;
+ 
 }
+
 .salary-heading {
   color: #fff;
   font-family: 'Roboto';
@@ -33,6 +35,6 @@
   font-size: 14px;
 }
 .horizontal-line {
-  width: 100%;
+  width: 80%;
   border: 1px solid #7e858e;
 }

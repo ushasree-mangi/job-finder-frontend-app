@@ -4,11 +4,12 @@ import {AiFillStar} from 'react-icons/ai'
 import {GoLocation} from 'react-icons/go'
 import {BsBriefcaseFill} from 'react-icons/bs'
 import {BiLinkExternal} from 'react-icons/bi'
+import {Link} from 'react-router-dom'
+import { FaArrowLeft } from "react-icons/fa";
 
 
-import SkillsCard from '../SkillsCard'
 import Header from '../Header'
-import SimilarJobItem from '../SimilarJobItem'
+
 import './index.css'
 
 const apiStatusConstants = {
@@ -21,7 +22,7 @@ const apiStatusConstants = {
 class JobItemDetails extends Component {
   state = {
     jobItemList: {},
-    similarJobItemList: [],
+   
     apiStatus: apiStatusConstants.initial,
   }
 
@@ -41,22 +42,15 @@ class JobItemDetails extends Component {
 
   getFormattedData = data => ({
     companyLogoUrl: data.company_logo_url,
-    companyWebsiteUrl: data.company_website_url,
     employmentType: data.employment_type,
     id: data.id,
     jobDescription: data.job_description,
-    lifeAtCompany: {
-      description: data.life_at_company.description,
-      imageUrl: data.life_at_company.image_url,
-    },
+    
     location: data.location,
     rating: data.rating,
     title: data.title,
     packagePerAnnum: data.package_per_annum,
-    skills: data.skills.map(eachSkill => ({
-      imageUrl: eachSkill.image_url,
-      name: eachSkill.name,
-    })),
+   
   })
 
   getJobItem = async () => {
@@ -68,7 +62,7 @@ class JobItemDetails extends Component {
     const {id} = params
 
     const jwtToken = Cookies.get('jwt_token')
-    const url = `https://apis.ccbp.in/jobs/${id}`
+    const url = `https://jobby-backend-app.onrender.com/job/${id}`
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -77,16 +71,15 @@ class JobItemDetails extends Component {
     }
     const response = await fetch(url, options)
     if (response.ok === true) {
-      const data = await response.json()
-      const updatedData = this.getFormattedData(data.job_details)
-      const updatedSkillData = data.similar_jobs.map(eachSimilarJob =>
-        this.getFormattedSkillData(eachSimilarJob),
-      )
+      const {job_details} = await response.json()
+      console.log(job_details[0])
+      const updatedData = this.getFormattedData(job_details[0])
+      
       console.log(updatedData)
-      console.log(updatedSkillData)
+     
       this.setState({
         jobItemList: updatedData,
-        similarJobItemList: updatedSkillData,
+       
         apiStatus: apiStatusConstants.success,
       })
     } else {
@@ -97,21 +90,19 @@ class JobItemDetails extends Component {
   }
 
   renderJobItemDetails = () => {
-    const {jobItemList, similarJobItemList} = this.state
+    const {jobItemList} = this.state
     const {
       companyLogoUrl,
-      companyWebsiteUrl,
+     
       employmentType,
       jobDescription,
       location,
       title,
       rating,
       packagePerAnnum,
-      lifeAtCompany,
-      skills,
+     
     } = jobItemList
-    const {description, imageUrl} = lifeAtCompany
-
+   
     return (
       <div className="full-job-item-container">
         <div className="job-items-container">
@@ -145,34 +136,13 @@ class JobItemDetails extends Component {
           <hr className="line" />
           <div className="description-container">
             <h1 className="desc-heading">Description</h1>
-            <a className="visit-link" href={companyWebsiteUrl}>
-              Visit
-              <BiLinkExternal className="bi-link" />
-            </a>
+           
           </div>
           <p className="job-story-desc">{jobDescription}</p>
-          <h1 className="skill-heading">Skills</h1>
-          <ul className="skill-container">
-            {skills.map(eachSkill => (
-              <SkillsCard key={eachSkill.id} skillDetails={eachSkill} />
-            ))}
-          </ul>
-          <h1 className="life-company-heading">Life at company</h1>
-          <div className="life-at-company-container">
-            <p className="life-company-desc">{description}</p>
-            <img
-              src={imageUrl}
-              alt="life at company"
-              className="company-logo"
-            />
-          </div>
+          
+          
         </div>
-        <h1 className="similar-job-heading">Similar Jobs</h1>
-        <ul className="similar-cards">
-          {similarJobItemList.map(eachItem => (
-            <SimilarJobItem key={eachItem.id} jobDetails={eachItem} />
-          ))}
-        </ul>
+       
       </div>
     )
   }
@@ -201,7 +171,7 @@ class JobItemDetails extends Component {
 
   renderLoadingView = () => (
     <div className="profile-loader-container" testid="loader">
-      <p>Loader ...</p>
+      <p className='loading-text'>Loading ...</p>
     </div>
   )
 
@@ -225,6 +195,7 @@ class JobItemDetails extends Component {
       <>
         <Header />
         <div className="get-products-details-container">
+          <Link to='/jobs' className='back-link'><p className='back-btn-text'><FaArrowLeft/> <span style={{marginLeft:'15px'}}>Back </span></p></Link>
           {this.renderJobViews()}
         </div>
       </>

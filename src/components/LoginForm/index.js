@@ -44,25 +44,11 @@ class LoginForm extends Component {
     const response = await fetch(url, options)
     const data = await response.json()
     if (response.ok === true) {
-      const userDetails2={
-        
-          "username": "rahul",
-          "password": "rahul@2021"
-        }
-      const url2 = 'https://apis.ccbp.in/login'
-    const options2 = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userDetails2),
-    }
-    const response2 = await fetch(url2, options2)
-    const data=await response2.json()
-    if(response2.ok===true){ 
+      
+    
       this.setState({verifyMsg:""})
       this.onSubmitSuccess(data.jwt_token)
-    }
+    
     } else {
       this.setState({verifyMsg:""})
       this.onSubmitFailure(data.error_msg)

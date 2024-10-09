@@ -63,7 +63,7 @@ class ProfileDetails extends Component {
 
   renderLoadingView = () => (
     <div className="profile-loader-container" testid="loader">
-     <p>Loading...</p>
+     <p className='loading-text'>Loading...</p>
     </div>
   )
 

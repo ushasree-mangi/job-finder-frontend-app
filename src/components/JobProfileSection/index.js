@@ -9,37 +9,37 @@ import './index.css'
 const employmentTypesList = [
   {
     label: 'Full Time',
-    employmentTypeId: 'FULLTIME',
+    employmentTypeId: 'Full Time',
   },
   {
     label: 'Part Time',
-    employmentTypeId: 'PARTTIME',
+    employmentTypeId: 'Part Time',
   },
   {
     label: 'Freelance',
-    employmentTypeId: 'FREELANCE',
+    employmentTypeId: 'Freelance',
   },
   {
     label: 'Internship',
-    employmentTypeId: 'INTERNSHIP',
+    employmentTypeId: 'Internship',
   },
 ]
 
 const salaryRangesList = [
   {
-    salaryRangeId: '1000000',
+    salaryRangeId: '10 LPA',
     label: '10 LPA and above',
   },
   {
-    salaryRangeId: '2000000',
+    salaryRangeId: '20 LPA',
     label: '20 LPA and above',
   },
   {
-    salaryRangeId: '3000000',
+    salaryRangeId: '30 LPA',
     label: '30 LPA and above',
   },
   {
-    salaryRangeId: '4000000',
+    salaryRangeId: '40 LPA',
     label: '40 LPA and above',
   },
 ]
@@ -71,7 +71,7 @@ class JobProfileSection extends Component {
 
     const jwtToken = Cookies.get('jwt_token')
     const {salaryRange, employmentType, searchInput} = this.state
-    const url = `https://apis.ccbp.in/jobs?employment_type=${employmentType.join()}&minimum_package=${salaryRange}&search=${searchInput}`
+    const url = `https://jobby-backend-app.onrender.com/jobs?employment_type=${employmentType.join()}&minimum_package=${salaryRange}&search_input=${searchInput}`
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -121,11 +121,20 @@ class JobProfileSection extends Component {
     this.setState({salaryRange: salary}, this.getJobDetails)
   }
 
-  changeEmploymentType = type => {
+  changeEmploymentType = targetEle => {
+    if(targetEle.checked){ 
     this.setState(
-      prev => ({employmentType: [...prev.employmentType, type]}),
+      prev => ({employmentType: [...prev.employmentType, targetEle.value]}),
       this.getJobDetails,
     )
+  }else{
+    const {employmentType}=this.state
+    const filteredEmploymentTypeList=employmentType.filter((item)=>(item!==targetEle.value))
+    this.setState(
+      prev => ({employmentType: [...filteredEmploymentTypeList]}),
+      this.getJobDetails,
+    )
+  }
   }
 
   renderJobDetails = () => {
@@ -215,7 +224,7 @@ class JobProfileSection extends Component {
 
   renderLoadingView = () => (
     <div className="profile-loader-container" testid="loader">
-     <p>Loader...</p>
+     <p className='loading-text'>Loading...</p>
     </div>
   )
 

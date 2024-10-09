@@ -3,12 +3,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 80px;
 }
-.website-logo {
-  width: 150px;
+.app-logo {
+  width: 100px;
   height: 40px;
   margin-top: 10px;
-  margin-left: 100px;
+  margin-left: 25px;
+  color: #6366f1;
+  font-family: sans-serif;
+  font-size: 26px;
+}
+@media screen and (min-width:992px){
+  .navbar-container{
+    justify-content: space-between;
+  }
+  .website-logo {
+    margin-left: 100px;
+  }
+  
 }
 .header-list-items {
   list-style-type: none;
@@ -33,9 +46,57 @@
   margin-right: 55px;
   width: 110px;
 }
-.jon-heading {
+.icon{
+  color: #fff;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 20px;
+  margin-right: 20px;
+  padding: 0px;
+}
+.icon-button{
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 20px;
+  margin-right: 20px;
+}
+.job-heading {
   margin-left: 40px;
 }
 .link-item {
   text-decoration: none;
+}
+.links-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+@media screen and (min-width:768px){
+  .icon{
+    display: none;
+  }
+  .icon-button{
+    display: none;
+  }
+  
+}
+@media screen and (max-width:768px){
+  .home{
+    display: none;
+
+  }
+  .logout-button{
+    display: none;
+  }
+  .header-list-items {
+    margin-right: 30px;
+    align-items: center;
+  }
+  
+}
+.home-icon{
+   font-size: 28px;
 }

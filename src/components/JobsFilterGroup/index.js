@@ -2,13 +2,16 @@ import ProfileDetails from '../ProfileDetails'
 import './index.css'
 
 const JobsFilterGroup = props => {
+
+
   const getEmploymentTypeList = () => {
     const {employmentTypesList} = props
 
     return employmentTypesList.map(employ => {
       const {changeEmploymentType} = props
       const onChangeEmployType = event =>
-        changeEmploymentType(event.target.value)
+        
+        changeEmploymentType(event.target)
 
       return (
         <li
@@ -73,7 +76,7 @@ const JobsFilterGroup = props => {
 
   return (
     <div className="job-filter-group">
-      <ProfileDetails />
+      
       <hr className="horizontal-line" />
       {renderEmploymentType()}
       <hr className="horizontal-line" />
