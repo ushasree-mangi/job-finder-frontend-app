@@ -35,11 +35,14 @@
   border-radius: 15px;
   display: block;
   justify-self: start;
- margin-top: 30px;
-  width: 500px;
+ margin-top: 50px;
+  width: 80vw;
+  margin-bottom: 50px;
 }
+
 .cta-desc{
   margin-top: 15px;
+  margin-bottom: 18px;
 }
 .cta-heading{
   margin-top: 35px;

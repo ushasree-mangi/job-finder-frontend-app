@@ -28,6 +28,7 @@ const Home = () => {
             <img className='home-page-jobs-img' src="https://res.cloudinary.com/dtcogqxhp/image/upload/v1732965569/Building-Blocks-of-Job-Seeking_ltfkbt.jpg"/>
           </div>
         </div>
+        <div className='home-page-card-container'>
 
         
         <h2 className="cta-heading">Ready to Get Hired?</h2>
@@ -37,18 +38,8 @@ const Home = () => {
           </p>
         <a className="cta-button" href="/register">Sign Up Today</a>
        
-        <div className='home-page-card-container'>
-<p className="footer-tagline">
-"Helping you find a career, not just a job!"
-</p>
-<ul className="tips-list">
-  <li> Build skills</li>
-  <li> Build Resume and profile</li>
-  <li> Apply jobs that fit you</li>
-  <li> Start your journey !</li>
-  
-</ul>
-</div>
+        </div>
+
 
       </div>
     </>
