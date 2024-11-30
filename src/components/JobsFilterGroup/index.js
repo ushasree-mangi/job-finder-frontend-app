@@ -77,10 +77,11 @@ const JobsFilterGroup = props => {
   return (
     <div className="job-filter-group">
       
-      <hr className="horizontal-line" />
+     
       {renderEmploymentType()}
-      <hr className="horizontal-line" />
+   
       {renderSalaryRange()}
+      <img className='jobs-search-image' alt='jobs search img' src="https://res.cloudinary.com/dtcogqxhp/image/upload/v1732964868/webdeveloperjobs_i9ejoi.jpg"/>
     </div>
   )
 }

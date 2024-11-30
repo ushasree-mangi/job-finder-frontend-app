@@ -1,8 +1,9 @@
 .job-filter-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   margin-left: 15px;
+  align-items: center;
  
 }
 
@@ -19,9 +20,14 @@
   padding: 0px;
   margin: 0px;
 }
+.jobs-search-image{
+  width: 300px;
+  height: 180px;
+}
 .salary-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
+  width: 300px;
 }
 .checkbox-list-items {
   display: flex;

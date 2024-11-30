@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
+import {Redirect , Link} from 'react-router-dom'
 
 import './index.css'
 
@@ -112,6 +112,11 @@ class LoginForm extends Component {
 
     return (
       <div className="jobby-app-container">
+        <div>
+           <img alt='jobs img' className='login-page-jobs-img' src="https://res.cloudinary.com/dtcogqxhp/image/upload/v1732952031/bc5c663461c846d5afcf85c53632e312_yxrsfn.jpg"/>
+           <p className='login-page-question-text'>Want to do a job ?</p>
+          </div>
+
         <div className="card-container">
           <h1 className='logo-name'>JobFinder</h1>
           
@@ -122,7 +127,7 @@ class LoginForm extends Component {
               Login
             </button>
             <p className='register-here-text'>{verifyMsg}</p>
-            <p className='register-here-text'>If you don't have an account <a href="/register">Register here</a></p>
+            <p className='register-here-text'>If you don't have an account <Link to="/register">Register here</Link></p>
             {showSubmitError && <p className="error-msg">*{errorMsg}</p>}
           </form>
         </div>

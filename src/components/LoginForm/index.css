@@ -3,8 +3,16 @@
   padding-top: 40px;
   padding-bottom: 40px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+.login-page-jobs-img{
+  height: 85vh;
+  width: 300px;
+  margin-right: 50px;
+  margin-bottom: 15px;
 }
 .card-container {
   display: flex;
@@ -17,6 +25,12 @@
 .website-logo {
   width: 150px;
   margin-bottom: 25px;
+} 
+
+.login-page-question-text{
+  color: #6366f1;
+  font-family: sans-serif;
+  font-size: 20px;
 }
 .form-container {
   display: flex;

@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
+import {Redirect , Link} from 'react-router-dom'
 
 import './index.css'
 
@@ -117,7 +117,7 @@ class RegisterForm extends Component {
               Register
             </button>
             <p className='login-here-text'>{verifyMsg}</p>
-            <p className='login-here-text'>If you registered already <a href="/login">Login here</a></p>
+            <p className='login-here-text'>If you registered already <Link to="/login">Login here</Link></p>
             {showSubmitError && <p className="error-msg">*{errorMsg}</p>}
           </form>
         </div>
